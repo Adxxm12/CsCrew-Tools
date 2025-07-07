@@ -4,7 +4,7 @@
 
 Cara jalankan tools:
 --------------------
-$ python3 sqltools.py
+$ python3 cscrewtools.py
 
 
 ====================
