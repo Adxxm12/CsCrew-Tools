@@ -1,1 +1,7 @@
-pip install requests urllib3 aiohttp colorama beautifulsoup4 pyfiglet googlesearch-python
+requests
+urllib3
+aiohttp
+colorama
+beautifulsoup4
+pyfiglet
+googlesearch-python
