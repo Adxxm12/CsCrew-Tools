@@ -507,7 +507,7 @@ def option_sql_tester():
 def google_dorking(query, num=10, pause=5):
     results = []
     try:
-        for url in search(query, num=num*3, pause=pause):
+        for url in search(query, stop=num*3, pause=pause):
             if len(results) >= num:
                 break
             if url not in results:
