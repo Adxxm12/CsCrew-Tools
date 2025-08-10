@@ -1,91 +1,107 @@
 ====================
-📄 Panduan Guna CsCrew Suite (cscrewtools.py)
-====================
+📄 CsCrew Suite Usage Guide (cscrewtools.py)
+How to run the tool:
 
-Cara jalankan tools:
---------------------
 $ python3 cscrewtools.py
-
-
 ====================
 🔹 Option 1: SQLi HS (Header Scanner)
-====================
-- Fungsi: Scan target URL menggunakan payload SQLi dalam header HTTP (User-Agent, X-Forwarded-For, dll)
-- Sesuai untuk bypass WAF atau endpoint admin
-- Guna fail berisi senarai domain/URL
 
-Contoh penggunaan:
-------------------
-1. Sediakan fail bernama `target.txt` (1 URL per baris)
-2. Jalankan tools dan pilih Option 1
-3. Masukkan path ke `target.txt`
-4. Hasil disimpan dalam `vulnerable_endpoints_<timestamp>.txt`
+    Function: Scan target URL using SQLi payloads in HTTP headers (User-Agent, X-Forwarded-For, etc.)
 
+    Suitable for bypassing WAF or admin endpoints
 
-====================
-🔹 Option 2: Vuln Finder (Scanner async)
-====================
-- Fungsi: Crawl satu domain dan uji SQLi, XSS, dan LFI dalam parameter URL dan form
-- Gunakan secara async (laju)
-- Sesuai untuk pentest menyeluruh
+    Uses a file containing a list of domains/URLs
 
-Contoh penggunaan:
-------------------
-1. Masukkan URL utama (cth: https://example.com)
-2. Tools akan crawl dan test semua sub-URL dan form
-3. Hasil dalam `vuln_finder_results.txt` dan versi JSON
+Usage example:
 
+    Prepare a file named target.txt (1 URL per line)
+
+    Run the tool and select Option 1
+
+    Enter the path to target.txt
+
+    Results are saved in vulnerable_endpoints_<timestamp>.txt
 
 ====================
-🔹 Option 3: SQLi Tester + Test hasil Option 4
+🔹 Option 2: Vuln Finder (Async Scanner)
+
+    Function: Crawl a domain and test for SQLi, XSS, and LFI in URL parameters and forms
+
+    Uses asynchronous scanning (fast)
+
+    Suitable for thorough penetration testing
+
+Usage example:
+
+    Enter the main URL (e.g., https://example.com)
+
+    The tool will crawl and test all sub-URLs and forms
+
+    Results are saved in vuln_finder_results.txt and also in JSON format
+
 ====================
-- Fungsi: Uji sama ada URL rentan terhadap SQLi (basic payload)
-- Sesuai untuk test hasil Google Dork
+🔹 Option 3: SQLi Tester + Test results from Option 4
 
-Cara guna:
-----------
-1. Pilih Option 3
-2. Pilih:
-   - [1] Masukkan satu URL secara manual
-   - [2] Masukkan fail senarai URL (cth: hasil_dork.txt)
-3. Tools akan uji setiap URL dan tunjuk jika rentan
+    Function: Test if a URL is vulnerable to SQLi (basic payloads)
 
+    Suitable for testing Google Dork results
+
+How to use:
+
+    Select Option 3
+
+    Choose:
+
+        [1] Enter a single URL manually
+
+        [2] Enter a file containing a list of URLs (e.g., hasil_dork.txt)
+
+    The tool will test each URL and display if vulnerable
 
 ====================
 🔹 Option 4: Google Dorking
-====================
-- Fungsi: Gunakan Google untuk cari target yang rentan
-- Sesuai digabungkan dengan Option 3
 
-Langkah:
---------
-1. Pilih Option 4
-2. Masukkan dork (cth: inurl:php?id=)
-3. Masukkan jumlah hasil dork (cth: 20)
-4. Hasil disimpan dalam `hasil_dork.txt`
+    Function: Use Google to find potentially vulnerable targets
 
+    Can be combined with Option 3
 
-====================
-🔁 Contoh Gabungan Option 4 + 3
-====================
-1. Guna Option 4 untuk dork:
-   - Contoh dork: inurl:product.php?id=
-   - Simpan ke `hasil_dork.txt`
-2. Teruskan ke Option 3
-   - Pilih `2` untuk input dari file `hasil_dork.txt`
-   - Uji SQLi pada semua hasil dari Google
+Steps:
 
+    Select Option 4
+
+    Enter the dork query (e.g., inurl:php?id=)
+
+    Enter the number of dork results to fetch (e.g., 20)
+
+    Results are saved in hasil_dork.txt
 
 ====================
-🛑 Option 5: Keluar
-====================
-- Keluar dari program.
+🔁 Example Combining Option 4 + 3
 
+    Use Option 4 to dork:
+
+        Example dork: inurl:product.php?id=
+
+        Save results to hasil_dork.txt
+
+    Proceed to Option 3
+
+        Choose 2 to input from file hasil_dork.txt
+
+        Test SQLi on all Google results
 
 ====================
-📦 Output Files Penting
+🛑 Option 5: Exit
+
+    Exit the program.
+
 ====================
-- hasil_dork.txt            ← Hasil Google Dork
-- vuln_finder_results.txt   ← Hasil Vuln Finder
-- vulnerable_endpoints_*.txt← Hasil Header Scanner
-- *.json                    ← Laporan format JSON untuk analisis lanjutan
+📦 Important Output Files
+
+    hasil_dork.txt ← Google Dork results
+
+    vuln_finder_results.txt ← Vuln Finder results
+
+    vulnerable_endpoints_*.txt ← Header Scanner results
+
+    *.json ← JSON report files for advanced analysis
